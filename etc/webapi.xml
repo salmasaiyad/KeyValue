@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/leanscale-keyvalue/keyvalue" method="GET">
+		<service class="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" method="getAllData"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue" method="POST">
+		<service class="LeanScale\KeyValue\Api\KeyvalueManagementInterface" method="postKeyvalue"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue/:keyvalueId" method="DELETE">
+		<service class="LeanScale\KeyValue\Api\KeyvalueManagementInterface" method="deleteKeyvalue"/>
+		<resources>
+			<resource ref="LeanScale_KeyValue::Keyvalue_delete"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue/search" method="GET">
+		<service class="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue/list" method="GET">
+		<service class="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" method="getAllData"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue/:keyvalueId" method="GET">
+		<service class="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" method="getByCode"/>
+		<resources>
+			<resource ref="anonymous"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue/:keyvalueId" method="PUT">
+		<service class="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="LeanScale_KeyValue::Keyvalue_update"/>
+		</resources>
+	</route>
+	<route url="/V1/leanscale-keyvalue/keyvalue/:keyvalueId" method="DELETE">
+		<service class="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" method="deleteByCode"/>
+		<resources>
+			<resource ref="LeanScale_KeyValue::Keyvalue_delete"/>
+		</resources>
+	</route>
+</routes>

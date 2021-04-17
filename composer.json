@@ -1,0 +1,21 @@
+{
+    "name": "leanscale/module-keyvalue",
+    "description": "Key value module",
+    "type": "magento2-module",
+    "license": "",
+    "authors": [
+        {
+            "name": "Salma Saiyad"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "LeanScale\\KeyValue\\": ""
+        }
+    }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="LeanScale\KeyValue\Api\KeyvalueManagementInterface" type="LeanScale\KeyValue\Model\KeyvalueManagement"/>
+	<preference for="LeanScale\KeyValue\Api\KeyvalueRepositoryInterface" type="LeanScale\KeyValue\Model\KeyvalueRepository"/>
+	<preference for="LeanScale\KeyValue\Api\Data\KeyvalueInterface" type="LeanScale\KeyValue\Model\Data\Keyvalue"/>
+	<preference for="LeanScale\KeyValue\Api\Data\KeyvalueSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<!-- <virtualType name="LeanScaleFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+	<virtualType name="LeanScaleFilterPoolProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">LeanScale\KeyValue\Model\ResourceModel\Keyvalue\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">LeanScaleFilterPool</argument>
+        </arguments>
+    </virtualType> -->
+	<virtualType name="LeanScale\KeyValue\Model\ResourceModel\Keyvalue\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">ls_keyvalue</argument>
+			<argument name="resourceModel" xsi:type="string">LeanScale\KeyValue\Model\ResourceModel\Keyvalue\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="leanscale_keyvalue_keyvalue_listing_data_source" xsi:type="string">LeanScale\KeyValue\Model\ResourceModel\Keyvalue\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

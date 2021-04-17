@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="ls_keyvalue" resource="default" engine="innodb" comment="ls_keyvalue Table">
+		<column xsi:type="smallint" name="id" padding="6" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id"/>
+		</constraint>
+		<column name="key" nullable="false" xsi:type="varchar" comment="key" length="255"/>
+		<constraint xsi:type="unique" referenceId="LS_KEYVALUE_UNIQ_KEY">
+			<column name="key"/>
+		</constraint>
+		<column name="value" nullable="true" xsi:type="text" comment="value"/>
+		<column name="date_created" nullable="false" xsi:type="timestamp" comment="date_created" default="CURRENT_TIMESTAMP"/>
+		<column name="date_updated" nullable="false" xsi:type="timestamp" comment="date_updated" default="CURRENT_TIMESTAMP" on_update="true"/>
+		<index referenceId="LS_KEYVALUE_KEY_FULLTEXT" indexType="fulltext">
+			<column name="key"/>
+			<column name="value"/>
+		</index>
+	</table>
+</schema>
